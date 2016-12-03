@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F1C6EF0C-900E-41D0-97D6-85D1987D2722}"
+	ProjectSection(SolutionItems) = preProject
+		..\AF_NetCoreLab\AF_NetCoreLab\global.json = ..\AF_NetCoreLab\AF_NetCoreLab\global.json
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{38963038-1DFF-4204-8457-CD4F02C448A5}"
 	ProjectSection(SolutionItems) = preProject
