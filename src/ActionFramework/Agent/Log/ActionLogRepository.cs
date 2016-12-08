@@ -7,7 +7,7 @@ using ActionFramework.Log;
 
 namespace ActionFramework.Agent.Log
 {
-    public static class ActionLogRepository
+    internal static class ActionLogRepository
     {
         public static bool SaveActionLog(string appName, ActionLog log)
         {
@@ -28,7 +28,7 @@ namespace ActionFramework.Agent.Log
             return successfullySaved;
         }
 
-        public static List<ActionLog> GetActionLogs(string appName, string actionName)
+        private static List<ActionLog> GetActionLogs(string appName, string actionName)
         {
             List<ActionLog> log;
             var filePath = GetFilePath(appName, actionName);

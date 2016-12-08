@@ -14,6 +14,7 @@ namespace HelloWorld.Actions
 
         public override bool Execute(out string actionMessage)
         {
+          
             actionMessage = "Hello my dear friend!";
             return true;
         }

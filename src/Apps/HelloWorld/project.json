@@ -2,7 +2,7 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "ActionFramework.App": "1.0.0-*",
+    "ActionFramework": "0.1.0-*",
     "NETStandard.Library": "1.6.1"
   },
 
