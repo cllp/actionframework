@@ -10,6 +10,14 @@ namespace ActionFramework.Agent.Scheduling
     {
         public static List<ActionTimer> ActiveTimers { get; private set; } //static field to be able to access the active timers.
 
+        public Scheduler()
+        {
+            if (ActiveTimers == null)
+            {
+                ActiveTimers = new List<ActionTimer>();
+            }
+        }
+
         public void ScheduleAllActions()
         {
             var apps = AppRepository.GetInstalledApps();
@@ -25,11 +33,6 @@ namespace ActionFramework.Agent.Scheduling
 
         public void ScheduleAction(ActionSchedule schedule)
         {
-            if (ActiveTimers == null)
-            {
-                ActiveTimers = new List<ActionTimer>();
-            }
-
             //remove any existing timer for this action
             var existingTimer = ActiveTimers.FirstOrDefault(t => t.AppName == schedule.AppName && t.ActionName == schedule.ActionName);
             if (existingTimer != null)
