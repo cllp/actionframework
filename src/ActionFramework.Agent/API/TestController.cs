@@ -31,9 +31,11 @@ namespace ActionFramework.Agent.API
             schedule.Interval = 2;
             schedule.Unit = IntervalUnit.Second;
             schedule.NextRun = DateTime.UtcNow;
-            schedule.StopDateTime = DateTime.UtcNow.AddMilliseconds(20000);
+            schedule.StopDateTime = DateTime.UtcNow.AddSeconds(180);
             ActionScheduleRepository.SaveActionSchedule(schedule);
-            //Todo: whenever 
+
+            var scheduler = new Scheduler();
+            scheduler.ScheduleAction(schedule);
 
             return schedule;
         }

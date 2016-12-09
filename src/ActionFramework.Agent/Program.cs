@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using System;
+using ActionFramework.Agent.Scheduling;
 
 namespace ActionFramework.Agent
 {
@@ -9,8 +10,8 @@ namespace ActionFramework.Agent
         {
             Console.WriteLine("Setting up action timers...");
             var scheduler = new Scheduling.Scheduler();
-            var timers = scheduler.ScheduleAllActions();
-            Console.WriteLine($"{timers.Count} action(s) where scheduled.");
+            scheduler.ScheduleAllActions();
+            Console.WriteLine($"{Scheduler.ActiveTimers.Count} action(s) are scheduled.");
 
             var host = new WebHostBuilder()
                 .UseKestrel()
