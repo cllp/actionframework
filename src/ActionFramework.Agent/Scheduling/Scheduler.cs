@@ -1,10 +1,10 @@
-﻿using ActionFramework.Scheduling;
+﻿using ActionFramework.Agent.App;
+using ActionFramework.Scheduling;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ActionFramework.Agent.App;
 
-namespace ActionFramework.Agent.Scheduling
+namespace ActionFrameworkAgent.Scheduling
 {
     public class Scheduler
     {

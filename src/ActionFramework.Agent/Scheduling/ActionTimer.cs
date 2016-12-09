@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using ActionFramework.Agent.App;
+﻿using ActionFramework.Agent.App;
 using ActionFramework.Scheduling;
+using System;
+using System.Threading;
 
-namespace ActionFramework.Agent.Scheduling
+namespace ActionFrameworkAgent.Scheduling
 {
     public class ActionTimer
     {

@@ -1,15 +1,16 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using System;
-using ActionFramework.Agent.Scheduling;
+﻿using System;
+using ActionFramework.Agent;
+using ActionFrameworkAgent.Scheduling;
+using Microsoft.AspNetCore.Hosting;
 
-namespace ActionFramework.Agent
+namespace ActionFrameworkAgent
 {
     public class Program
     {
         public static void Main(string[] args)
         {
             Console.WriteLine("Setting up action timers...");
-            var scheduler = new Scheduling.Scheduler();
+            var scheduler = new Scheduler();
             scheduler.ScheduleAllActions();
             Console.WriteLine($"{Scheduler.ActiveTimers.Count} action(s) are scheduled.");
 

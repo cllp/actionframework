@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using ActionFramework.Agent.App;
+using ActionFramework.Scheduling;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ActionFramework.Agent.App;
-using Newtonsoft.Json;
-using ActionFramework.Scheduling;
 
-namespace ActionFramework.Agent.Scheduling
+namespace ActionFrameworkAgent.Scheduling
 {
     public static class ActionScheduleRepository
     {
