@@ -9,9 +9,17 @@ using System.Runtime.Loader;
 
 namespace ActionFramework.Agent.App
 {
-    public static class AppRepository
+    public class AppRepository
     {
-        public static List<ActionFramework.App.App> GetInstalledApps()
+        public AppRepository()
+        {
+            if (!Agent.AgentIsAvailable())
+            {
+                throw new Exception("Agent is not available.");
+            }
+        }
+
+        public List<ActionFramework.App.App> GetInstalledApps()
         {
             var apps = new List<ActionFramework.App.App>();
             var appsPath = GetInstalledAppsDirectory();
@@ -32,7 +40,7 @@ namespace ActionFramework.Agent.App
             return apps;
         }
 
-        public static ActionFramework.App.App GetApp(string appName)
+        public ActionFramework.App.App GetApp(string appName)
         {
             var filePath = GetInstalledAppsDirectory() + "\\" + appName + "\\" + appName + ".dll";
             if (!File.Exists(filePath))
@@ -46,13 +54,13 @@ namespace ActionFramework.Agent.App
             return appInstance;
         }
 
-        public static bool RunAction(string appName, string actionName)
+        public bool RunAction(string appName, string actionName)
         {
             var success = false;
             var app = GetApp(appName);
-            if (app != null)
-            {
-                var action = app.Actions.FirstOrDefault(a => a.ActionName == actionName);
+            var action = app?.Actions.FirstOrDefault(a => a.ActionName == actionName);
+            if (action != null)
+            { 
                 var actionLog = new ActionLog(action.ActionName);
                 actionLog.StartRunDate = DateTime.UtcNow;
 
@@ -74,13 +82,13 @@ namespace ActionFramework.Agent.App
             return success;
         }
 
-        private static string GetInstalledAppsDirectory()
+        private string GetInstalledAppsDirectory()
         {
             //get path to the running application's directory
             var applicationPath = ProjectRootResolver.ResolveRootDirectory(Directory.GetCurrentDirectory());
 
             const string installedAppsDirectoryName = "InstalledApps";
-            var installedAppsPath = applicationPath + "\\" + installedAppsDirectoryName; //todo: check if this works on different OS
+            var installedAppsPath = applicationPath + "\\" + installedAppsDirectoryName; //todo: check if this works on different OS (Linux)
 
             if (!Directory.Exists(installedAppsPath))
             {
@@ -90,7 +98,7 @@ namespace ActionFramework.Agent.App
             return installedAppsPath;
         }
 
-        public static string GetAppDirectory(string appName)
+        public string GetAppDirectory(string appName)
         {
             var appDirectory = GetInstalledAppsDirectory() + "\\" + appName;
             if (!Directory.Exists(appDirectory))

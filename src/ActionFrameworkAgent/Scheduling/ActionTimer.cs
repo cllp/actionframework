@@ -45,7 +45,8 @@ namespace ActionFrameworkAgent.Scheduling
             }
             else
             {
-                AppRepository.RunAction(s.ActionSchedule.AppName, s.ActionSchedule.ActionName);
+                var appRepo = ActionFramework.Agent.Agent.GetAppRepository();
+                appRepo.RunAction(s.ActionSchedule.AppName, s.ActionSchedule.ActionName);
 
                 var nextRunDate = DateTime.UtcNow.AddSeconds(s.ActionSchedule.IntervalAsSeconds());
 

@@ -20,7 +20,8 @@ namespace ActionFrameworkAgent.Scheduling
 
         public void ScheduleAllActions()
         {
-            var apps = AppRepository.GetInstalledApps();
+            var appRepo = ActionFramework.Agent.Agent.GetAppRepository();
+            var apps = appRepo.GetInstalledApps();
             foreach (var app in apps)
             {
                 foreach (var action in app.Actions)

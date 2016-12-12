@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace ActionFramework.App
 {
@@ -10,29 +11,8 @@ namespace ActionFramework.App
         public abstract List<Action> Actions { get; }
 
         public string AppName => GetType().Name;
+        public string AppVersion => GetType().GetTypeInfo().Assembly.GetName().Version.ToString();
 
-        //public bool RunAction(Action action)
-        //{
-        //    var actionLog = new ActionLog(action.ActionName);
-        //    actionLog.StartRunDate = DateTime.UtcNow;
-
-        //    string actionMessage;
-        //    var success = false;
-        //    try
-        //    {
-        //        success = action.Execute(out actionMessage);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        actionMessage = e.Message;
-        //    }
-
-        //    actionLog.Success = success;
-        //    actionLog.EndRunDate = DateTime.UtcNow;
-        //    actionLog.LogMessage = actionMessage;
-        //    ActionLogRepository.SaveActionLog(AppName, actionLog);
-
-        //    return success;
-        //}
+        //todo(?): Version of ActionFramework.dll that this app was referencing when built
     }
 }

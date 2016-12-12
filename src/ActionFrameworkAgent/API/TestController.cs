@@ -4,10 +4,9 @@ using System.Linq;
 using ActionFramework.Agent.App;
 using Microsoft.AspNetCore.Mvc;
 using ActionFramework.Scheduling;
-using ActionFrameworkAgent;
 using ActionFrameworkAgent.Scheduling;
 
-namespace ActionFramework.Agent.API
+namespace ActionFrameworkAgent.API
 {
     [Route("api/[controller]/[action]")]
     public class TestController : Controller
@@ -15,7 +14,8 @@ namespace ActionFramework.Agent.API
         [HttpGet]
         public List<ActionFramework.App.App> Get()
         {
-            var apps = AppRepository.GetInstalledApps();
+            var appRepo = ActionFramework.Agent.Agent.GetAppRepository();
+            var apps = appRepo.GetInstalledApps();
             //var asdf = new List<ActionFramework.App.App>();
             //foreach (var app in apps)
             //{
@@ -51,15 +51,16 @@ namespace ActionFramework.Agent.API
             //    var action = app.Actions.FirstOrDefault(a => a.ActionName == actionName);
             //    success = app.RunAction(action);
             //}
+            var appRepo = ActionFramework.Agent.Agent.GetAppRepository();
 
-            return AppRepository.RunAction(appName, actionName);
+            return appRepo.RunAction(appName, actionName);
         }
 
 
         [HttpGet]
-        public SystemInformation SystemInformation()
+        public AgentInformation SystemInformation()
         {
-            return new SystemInformation();
+            return new AgentInformation();
         }
     }
 }

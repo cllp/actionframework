@@ -56,7 +56,8 @@ namespace ActionFrameworkAgent.Scheduling
 
         private static string GetFilePath(string appName)
         {
-            var appDirectory = AppRepository.GetAppDirectory(appName);
+            var appRepo = ActionFramework.Agent.Agent.GetAppRepository();
+            var appDirectory = appRepo.GetAppDirectory(appName);
             if (appDirectory != null)
             {
                 return appDirectory + "\\ActionSchedules.json";

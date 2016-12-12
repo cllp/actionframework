@@ -14,7 +14,7 @@ namespace ActionFramework.Agent.Log
             var successfullySaved = false;
             var actionLogs = GetActionLogs(appName, log.ActionName);
             actionLogs.Insert(0, log);
-            actionLogs = actionLogs.OrderByDescending(l => l.StartRunDate).Take(100).ToList(); //do not save more than 100 log entries
+            actionLogs = actionLogs.OrderByDescending(l => l.StartRunDate).Take(500).ToList(); //do not save more than 500 log entries
 
             var filePath = GetFilePath(appName, log.ActionName);
             if (filePath != null)
@@ -51,7 +51,8 @@ namespace ActionFramework.Agent.Log
 
         private static string GetLogDirectory(string appName)
         {
-            var appDirectory = AppRepository.GetAppDirectory(appName);
+            var appRepo = ActionFramework.Agent.Agent.GetAppRepository();
+            var appDirectory = appRepo.GetAppDirectory(appName);
             if (appDirectory == null)
             {
                 return null;
