@@ -7,6 +7,9 @@ namespace ActionFrameworkAgent
         public string OsDescription { get; }
         public string ActionFrameworkDescription { get; }
         public string AgentDescription { get; }
+        //TODO
+        //public string InternalIp { get; }
+
 
 
         public AgentInformation()
