@@ -4,6 +4,7 @@ using System.Linq;
 using ActionFramework.Agent.App;
 using Microsoft.AspNetCore.Mvc;
 using ActionFramework.Scheduling;
+using ActionFrameworkAgent;
 using ActionFrameworkAgent.Scheduling;
 
 namespace ActionFramework.Agent.API
@@ -58,10 +59,7 @@ namespace ActionFramework.Agent.API
         [HttpGet]
         public SystemInformation SystemInformation()
         {
-            return new SystemInformation()
-            {
-                OsDescription = System.Runtime.InteropServices.RuntimeInformation.OSDescription
-            };
+            return new SystemInformation();
         }
     }
 }
