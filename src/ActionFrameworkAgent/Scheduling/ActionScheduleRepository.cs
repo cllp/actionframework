@@ -1,9 +1,9 @@
-﻿using ActionFramework.Agent.App;
-using ActionFramework.Scheduling;
+﻿using ActionFramework.Scheduling;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ActionFrameworkAgent.App;
 
 namespace ActionFrameworkAgent.Scheduling
 {
@@ -56,7 +56,7 @@ namespace ActionFrameworkAgent.Scheduling
 
         private static string GetFilePath(string appName)
         {
-            var appRepo = ActionFramework.Agent.Agent.GetAppRepository();
+            var appRepo = new AppRepository(); 
             var appDirectory = appRepo.GetAppDirectory(appName);
             if (appDirectory != null)
             {

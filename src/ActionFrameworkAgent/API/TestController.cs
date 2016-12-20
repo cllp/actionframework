@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ActionFramework.Agent.App;
+using ActionFramework.Agent;
 using Microsoft.AspNetCore.Mvc;
 using ActionFramework.Scheduling;
+using ActionFrameworkAgent.App;
 using ActionFrameworkAgent.Scheduling;
 
 namespace ActionFrameworkAgent.API
@@ -14,7 +15,7 @@ namespace ActionFrameworkAgent.API
         [HttpGet]
         public List<ActionFramework.App.App> Get()
         {
-            var appRepo = ActionFramework.Agent.Agent.GetAppRepository();
+            var appRepo = new AppRepository();
             var apps = appRepo.GetInstalledApps();
             //var asdf = new List<ActionFramework.App.App>();
             //foreach (var app in apps)
@@ -51,7 +52,7 @@ namespace ActionFrameworkAgent.API
             //    var action = app.Actions.FirstOrDefault(a => a.ActionName == actionName);
             //    success = app.RunAction(action);
             //}
-            var appRepo = ActionFramework.Agent.Agent.GetAppRepository();
+            var appRepo = new AppRepository();
 
             return appRepo.RunAction(appName, actionName);
         }

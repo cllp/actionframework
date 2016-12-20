@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace ActionFrameworkAgent
+namespace ActionFramework.Agent
 {
     public class AgentInformation
     {
@@ -14,6 +14,8 @@ namespace ActionFrameworkAgent
 
         public AgentInformation()
         {
+            //TODO: values should only be set when in context of Agent. 
+
             OsDescription = System.Runtime.InteropServices.RuntimeInformation.OSDescription;
 
             var assembly = Assembly.GetEntryAssembly(); 

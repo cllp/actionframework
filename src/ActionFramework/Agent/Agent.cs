@@ -3,23 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using ActionFramework.Agent.App;
 
 namespace ActionFramework.Agent
 {
-    public static class Agent
+    public class Agent
     {
-        public static AppRepository GetAppRepository()
+        private string agentUri;
+
+        public Agent(string remoteAgentUrl = "")
         {
-            if (!AgentIsAvailable())
+            if (string.IsNullOrWhiteSpace(remoteAgentUrl))
             {
-                return null;
+                if (!AgentIsAvailable())
+                {
+                    throw new Exception("Local agent is not available.");
+                }
+
+                agentUri = ""; //TODO: get from agent configuration
             }
 
-            return new AppRepository();
+            //TODO: check if remote agent is available
+            // use System.Net.Http.HttpClient();
+           
         }
 
-        public static bool AgentIsAvailable()
+        //TODO: Methods that should be available and/or a generic method that makes it possible to access any method in the Agent API
+
+        private bool AgentIsAvailable()
         {
             return Assembly.GetEntryAssembly().GetName().Name == "ActionFrameworkAgent";
         }

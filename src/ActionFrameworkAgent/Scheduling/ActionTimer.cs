@@ -1,7 +1,7 @@
-﻿using ActionFramework.Agent.App;
-using ActionFramework.Scheduling;
+﻿using ActionFramework.Scheduling;
 using System;
 using System.Threading;
+using ActionFrameworkAgent.App;
 
 namespace ActionFrameworkAgent.Scheduling
 {
@@ -45,7 +45,7 @@ namespace ActionFrameworkAgent.Scheduling
             }
             else
             {
-                var appRepo = ActionFramework.Agent.Agent.GetAppRepository();
+                var appRepo = new AppRepository();
                 appRepo.RunAction(s.ActionSchedule.AppName, s.ActionSchedule.ActionName);
 
                 var nextRunDate = DateTime.UtcNow.AddSeconds(s.ActionSchedule.IntervalAsSeconds());

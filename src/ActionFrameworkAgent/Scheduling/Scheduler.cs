@@ -1,8 +1,8 @@
-﻿using ActionFramework.Agent.App;
-using ActionFramework.Scheduling;
+﻿using ActionFramework.Scheduling;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ActionFrameworkAgent.App;
 
 namespace ActionFrameworkAgent.Scheduling
 {
@@ -20,7 +20,7 @@ namespace ActionFrameworkAgent.Scheduling
 
         public void ScheduleAllActions()
         {
-            var appRepo = ActionFramework.Agent.Agent.GetAppRepository();
+            var appRepo = new AppRepository();
             var apps = appRepo.GetInstalledApps();
             foreach (var app in apps)
             {

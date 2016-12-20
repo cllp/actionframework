@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ActionFramework.Agent.App;
-using Newtonsoft.Json;
 using ActionFramework.Log;
+using ActionFrameworkAgent.App;
+using Newtonsoft.Json;
 
-namespace ActionFramework.Agent.Log
+namespace ActionFrameworkAgent.Log
 {
     internal static class ActionLogRepository
     {
@@ -51,7 +51,7 @@ namespace ActionFramework.Agent.Log
 
         private static string GetLogDirectory(string appName)
         {
-            var appRepo = ActionFramework.Agent.Agent.GetAppRepository();
+            var appRepo = new AppRepository(); // ActionFramework.Agent.Agent.GetAppRepository();
             var appDirectory = appRepo.GetAppDirectory(appName);
             if (appDirectory == null)
             {

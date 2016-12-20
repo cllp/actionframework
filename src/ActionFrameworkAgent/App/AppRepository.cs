@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using ActionFramework.Log;
 using System.Linq;
-using ActionFramework.Agent.Log;
-using Microsoft.DotNet.ProjectModel;
 using System.Runtime.Loader;
+using ActionFramework.Log;
+using ActionFrameworkAgent.Log;
+using Microsoft.DotNet.ProjectModel;
 
-namespace ActionFramework.Agent.App
+namespace ActionFrameworkAgent.App
 {
     public class AppRepository
     {
-        public AppRepository()
-        {
-            if (!Agent.AgentIsAvailable())
-            {
-                throw new Exception("Agent is not available.");
-            }
-        }
+        //public AppRepository()
+        //{
+        //    if (!Agent.AgentIsAvailable())
+        //    {
+        //        throw new Exception("Agent is not available.");
+        //    }
+        //}
 
         public List<ActionFramework.App.App> GetInstalledApps()
         {
