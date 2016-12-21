@@ -1,7 +1,10 @@
 ﻿using System;
+using System.IO;
 using ActionFramework.Agent;
+using ActionFrameworkAgent.Configuration;
 using ActionFrameworkAgent.Scheduling;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.DotNet.ProjectModel;
 using Microsoft.Extensions.Configuration;
 
 namespace ActionFrameworkAgent
@@ -12,8 +15,8 @@ namespace ActionFrameworkAgent
 
         public static void Main(string[] args)
         {
-            //SetupConfiguration();
-            //Console.WriteLine("Configuration[\"agentguid\"]: " + Configuration["agentguid"]);
+            SetupConfiguration();
+            Console.WriteLine("Configuration[\"agentguid\"]: " + Configuration["agentguid"]);
 
             Console.WriteLine("Setting up action timers...");
             var scheduler = new Scheduler();
@@ -22,18 +25,20 @@ namespace ActionFrameworkAgent
 
             var host = new WebHostBuilder()
                 .UseKestrel()
-                .UseUrls("http://localhost:7406") //todo: add to config?
+                .UseUrls("http://127.0.0.1:" + Configuration["PortNumber"])
                 .UseStartup<Startup>()
                 .Build();
 
             host.Run();
-            
         }
 
         private static void SetupConfiguration()
         {
+            var configManager = new ConfigManager();
+            configManager.InitConfiguration();
+
             var builder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                .AddJsonFile(configManager.SettingsFilePath, optional: false, reloadOnChange: true);
 
             //TODO: store api key in a more secure way(?) .AddUserSecrets()
 
