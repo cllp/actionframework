@@ -27,35 +27,31 @@ namespace ActionFramework.Agent.App
                 var pathSegements = appDirectory.Split('/');
                 var appName = pathSegements[pathSegements.Length - 1];
                 var filePath = Path.Combine(appDirectory, appName + ".dll");
+
                 if (File.Exists(filePath))
                 {
+                    //loading the assembly
                     var appAssembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(filePath);
 
-                    foreach (Type type in appAssembly.GetTypes())
+                    foreach (System.Reflection.TypeInfo ti in appAssembly.DefinedTypes)
                     {
-                        bool isAssignedFrom = IsActionType(type);
-                        bool containsActionBase = type.Name.Contains("ActionBase");
-                        bool containsIAction = type.Name.Contains("IAction");
+                        //check if the assembly have any classes derived from Action in the loop, only then it is an App?
+                        if (ti.IsSubclassOf(typeof(ActionFramework.Core.App.Action)))
+                        {
+                            //Add a new App instance to the list
+                            //appAssembly.CreateInstance(ti.FullName) as ActionFramework.Core.App.IAction;
+                            var appInstance = Activator.CreateInstance(ti) as ActionFramework.Core.App.App;
+                            apps.Add(appInstance);
 
-                        if (isAssignedFrom && !containsIAction && !containsActionBase)
-                            types.Add(type);
-
-                        var appType = appAssembly.GetType(appName);
-                        var appInstance = Activator.CreateInstance(appType) as ActionFramework.Core.App.App;
-                        apps.Add(appInstance);
+                            //break the loop as the appInstance is already added
+                            break;
+                        }
                     }
                 }
             }
 
             return apps;
-        }
-
-       /* private static bool IsActionType(Type type)
-        {
-            System.Reflection.TypeFilter actionFilter = new System.Reflection.TypeFilter(ActionTypeFilter);
-            Type[] interfaces = type.FindInterfaces(actionFilter, typeof(IAction));
-            return interfaces.Count() > 0;
-        }*/
+        }   
 
         public ActionFramework.Core.App.App GetApp(string appName)
         {

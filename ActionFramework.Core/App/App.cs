@@ -10,8 +10,21 @@ namespace ActionFramework.Core.App
         public abstract string Description { get; }
         public abstract List<Action> Actions { get; }
 
-        public string AppName => GetType().Name;
-        public string AppVersion => GetType().GetTypeInfo().Assembly.GetName().Version.ToString();
+        public string AppName
+        {
+            get 
+            { 
+                return this.GetType().Name;
+            }
+        } 
+
+        public string AppVersion
+        {
+            get 
+            {
+                return this.GetType().GetTypeInfo().Assembly.GetName().Version.ToString();
+            }
+        } 
 
         //todo(?): Version of ActionFramework.dll that this app was referencing when built
     }
