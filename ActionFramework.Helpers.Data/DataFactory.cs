@@ -1,8 +1,5 @@
 ﻿using ActionFramework.Helpers.Data.Interface;
 using ActionFramework.Helpers.Data.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ActionFramework.Helpers.Data
 {

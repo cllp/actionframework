@@ -11,7 +11,7 @@ namespace ActionFramework.Test
 {
     public class DataTests
     {
-        private IDataService _dataService = DataFactory.GetDataService("Server=tcp:lltsensedev.database.windows.net,1433;Initial Catalog=LLTSQL01;Persist Security Info=False;User ID=llt;Password=Visby1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        private IDataService _dataService = DataFactory.GetDataService("***");
 
         
         [Fact]

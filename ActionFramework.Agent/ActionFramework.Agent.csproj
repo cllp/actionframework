@@ -44,9 +44,6 @@
     <Content Update="Apps\DynamicDeviceInfo\dynamicdeviceinfo.config.dev.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Apps\DynamicDeviceInfo\dynamicdeviceinfo.config.test.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Update="Apps\DynamicDeviceInfo\references.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
