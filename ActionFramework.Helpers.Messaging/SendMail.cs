@@ -8,7 +8,7 @@ namespace ActionFramework.Helpers.Messaging
 {
     public class SendMail
     {
-        private string apiKey; // = "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";
+        private string apiKey = string.Empty;
         private SendGridClient client;
         private EmailAddress from;
 

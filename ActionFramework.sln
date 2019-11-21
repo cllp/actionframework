@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{E9C90E70-E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLT.Sense.Decoder", "..\llt.sense\LLT.Sense.Decoder\LLT.Sense.Decoder.csproj", "{54748C34-2E75-44B4-96DB-300B3EBFE45A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Talkpool", "..\llt.sense\LLT.Sense.Apps\Talkpool\Talkpool.csproj", "{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -119,12 +121,31 @@ Global
 		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Test|x64.Build.0 = Debug|Any CPU
 		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Test|x86.ActiveCfg = Debug|Any CPU
 		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Test|x86.Build.0 = Debug|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Debug|x64.Build.0 = Debug|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Debug|x86.Build.0 = Debug|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Release|x64.ActiveCfg = Release|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Release|x64.Build.0 = Release|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Release|x86.ActiveCfg = Release|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Release|x86.Build.0 = Release|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Test|x64.ActiveCfg = Debug|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Test|x64.Build.0 = Debug|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Test|x86.ActiveCfg = Debug|Any CPU
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E}.Test|x86.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{54748C34-2E75-44B4-96DB-300B3EBFE45A} = {09E95D32-C3D6-4CB2-B233-42F931747FF7}
+		{6EB11784-1B1A-4A8D-B89D-81011D0AFB2E} = {09E95D32-C3D6-4CB2-B233-42F931747FF7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {19770C1F-F6D6-48F5-8F96-2956A480D8CF}
