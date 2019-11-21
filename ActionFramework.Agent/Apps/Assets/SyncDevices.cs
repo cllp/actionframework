@@ -1,10 +1,10 @@
 ﻿using System;
 using Action = ActionFramework.Action;
-using ActionFramework.Logger;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using ActionFramework.Helpers.Data.Interface;
 using ActionFramework.Helpers.Data;
+using ActionFramework.Configuration;
 
 namespace Assets
 {
@@ -16,7 +16,7 @@ namespace Assets
         public override object Run(dynamic jsonData)
         {
 
-            _dataService = DataFactory.GetDataService(SenseConnectionString);
+            _dataService = DataFactory.GetDataService(ConfigurationManager.Settings["AgentSettings:AgentConnectionString"]);
 
             try
             {
@@ -38,8 +38,8 @@ namespace Assets
             catch (Exception ex)
             {
                 var errormsg = $"Action SyncDevices caused an exception. Input: {jsonData.ToString()}";
-                //LogFactory.File.Error(ex, errormsg); 
-                throw new Exception(errormsg, ex);
+                Log.Error(ex, errormsg);
+                throw ex;
             }
         }
 

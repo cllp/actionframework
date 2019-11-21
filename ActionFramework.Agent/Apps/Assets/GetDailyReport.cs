@@ -23,7 +23,7 @@ namespace Assets
                 var results = sendMail.Send(
                     "claes-philip@staiger.se", "Test Subject", "TEst COntent", "<b>Test content</b>");
 
-                _dataService = DataFactory.GetDataService(SenseConnectionString);
+                _dataService = DataFactory.GetDataService(ConfigurationManager.Settings["AgentSettings:AgentConnectionString"]);
 
                 //get realestates
                 var realestates = _dataService.GetMany<dynamic>("SELECT * FROM RealEstate");

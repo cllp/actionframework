@@ -1,9 +1,9 @@
 ﻿using System;
 using Action = ActionFramework.Action;
-using ActionFramework.Logger;
 using ActionFramework.Helpers.Data.Interface;
 using System.Collections.Generic;
 using ActionFramework.Helpers.Data;
+using ActionFramework.Configuration;
 
 namespace Assets
 {
@@ -16,7 +16,7 @@ namespace Assets
         {
             try
             {
-                _dataService = DataFactory.GetDataService(SenseConnectionString);
+                _dataService = DataFactory.GetDataService(ConfigurationManager.Settings["AgentSettings:AgentConnectionString"]);
 
                 var parameters = new Dictionary<string, string>();
                 parameters.Add("RealEstateId", obj);
@@ -32,7 +32,7 @@ namespace Assets
             }
             catch (Exception ex)
             {
-                //LogFactory.File.Error(ex, $"GetTodayMessageCountByRealEstate caused an exception");
+                Log.Error(ex, $"GetTodayMessageCountByRealEstate caused an exception");
                 throw ex;
             }
         }

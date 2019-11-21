@@ -15,10 +15,6 @@ namespace Agent.Configuration
 
         public string Environment { get; set; }
 
-        public string ServiceBusConnectionString { get; set; }
-
-        public string ServiceBusQueueName { get; set; }
-
         public string AgentGuid { get; set; }
 
         public string ActionLogTable { get; set; }
@@ -28,10 +24,6 @@ namespace Agent.Configuration
         public string Url { get; set; }
 
         public string AppsDir { get; set; }
-
-        public string LogDirectory { get; set; }
-
-        public string LogLevels { get; set; }
 
         public bool UseHangfireServer { get; set; }
 

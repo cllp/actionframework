@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ActionFramework.Helpers.Data.Interface;
 using ActionFramework.Helpers.Data;
+using ActionFramework.Configuration;
 
 namespace Assets
 {
@@ -15,8 +16,7 @@ namespace Assets
 
         public override object Run(dynamic obj)
         {
-            _dataService = DataFactory.GetDataService(SenseConnectionString);
-
+            _dataService = DataFactory.GetDataService(ConfigurationManager.Settings["AgentSettings:AgentConnectionString"]);
             try
             {
                 var parameters = new Dictionary<string, string>();

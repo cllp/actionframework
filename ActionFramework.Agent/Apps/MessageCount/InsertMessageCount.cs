@@ -2,6 +2,7 @@ using System;
 using Action = ActionFramework.Action;
 using ActionFramework.Helpers.Data.Interface;
 using ActionFramework.Helpers.Data;
+using ActionFramework.Configuration;
 
 namespace MessageCount
 {
@@ -14,7 +15,8 @@ namespace MessageCount
         {
             try
             {
-                _dataService = DataFactory.GetDataService(SenseConnectionString);
+                _dataService = DataFactory.GetDataService(ConfigurationManager.Settings["AgentSettings:AgentConnectionString"]);
+
                 var result = _dataService.GetSingle<dynamic>("spInsertHourlyMessageCount", null);
                 return $"Ok {result}";
             }
