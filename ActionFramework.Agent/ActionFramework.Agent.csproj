@@ -31,6 +31,7 @@
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     <PackageReference Include="Serilog.Sinks.Graylog" Version="2.1.1" />
+    <PackageReference Include="ActionFramework" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -83,7 +84,21 @@
   <ItemGroup>
     <ProjectReference Include="..\ActionFramework.Helpers.Data\ActionFramework.Helpers.Data.csproj" />
     <ProjectReference Include="..\ActionFramework.Helpers.Messaging\ActionFramework.Helpers.Messaging.csproj" />
-    <ProjectReference Include="..\ActionFramework\ActionFramework.csproj" />
+    <ProjectReference Include="..\ActionFramework\ActionFramework.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\..\llt.sense\LLT.Sense.Apps\IPOnly\IPOnly.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\..\llt.sense\LLT.Sense.Apps\Netmore\Netmore.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\..\llt.sense\LLT.Sense.Apps\Search\Search.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\..\llt.sense\LLT.Sense.Apps\Talkpool\Talkpool.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>

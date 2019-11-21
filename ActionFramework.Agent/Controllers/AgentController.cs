@@ -4,8 +4,6 @@ using Agent.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authorization;
 using Agent.Auth;
-using System.Threading.Tasks;
-using ActionFramework.Configuration;
 using ActionFramework.Logger;
 using Serilog;
 using Microsoft.AspNetCore.Http;
@@ -20,9 +18,7 @@ namespace Agent.Controllers
         private readonly IConfiguration _configuration;
         private IAuthService _authService;
         private ILogger logger = LogService.Logger;
-        //private readonly ILogger _logger;
 
-        //public AgentController(AgentSettings agentSettings, IConfiguration configuration, IAuthService authService)
         public AgentController(AgentSettings agentSettings, IConfiguration configuration)
         {
             _agentSettings = agentSettings;
@@ -59,7 +55,6 @@ namespace Agent.Controllers
             {
                 string json = Newtonsoft.Json.JsonConvert.SerializeObject(ActionFramework.AppContext.Current);
                 return new ContentResult { Content = json, StatusCode = 200 };
-               // return Ok(apps);
             }
             catch (Exception ex)
             {
@@ -94,7 +89,6 @@ namespace Agent.Controllers
         [Authorize]
         public IActionResult Initialize()
         {
-            //rebuild config and apps - needs to be done to init new installed apps.
             ActionFramework.AppContext.Initialize();
             return Ok(_agentSettings);
         }
