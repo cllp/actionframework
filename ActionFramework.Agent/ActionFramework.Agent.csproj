@@ -84,18 +84,6 @@
     <ProjectReference Include="..\ActionFramework.Helpers.Data\ActionFramework.Helpers.Data.csproj" />
     <ProjectReference Include="..\ActionFramework.Helpers.Messaging\ActionFramework.Helpers.Messaging.csproj" />
     <ProjectReference Include="..\ActionFramework\ActionFramework.csproj" />
-    <ProjectReference Include="..\..\llt.sense\LLT.Sense.Apps\Netmore\Netmore.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\..\llt.sense\LLT.Sense.Apps\Search\Search.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\..\llt.sense\LLT.Sense.Apps\Talkpool\Talkpool.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\..\llt.sense\LLT.Sense.Apps\IPOnly\IPOnly.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>

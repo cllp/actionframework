@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionFramework.Agent", "Ac
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{E9C90E70-E88A-4329-8F76-F262B6BC60A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLT.Sense.Decoder", "..\llt.sense\LLT.Sense.Decoder\LLT.Sense.Decoder.csproj", "{54748C34-2E75-44B4-96DB-300B3EBFE45A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,11 +101,30 @@ Global
 		{2A12D537-6979-48BE-9797-6AA95CDFFFC9}.Test|x64.Build.0 = Debug|Any CPU
 		{2A12D537-6979-48BE-9797-6AA95CDFFFC9}.Test|x86.ActiveCfg = Debug|Any CPU
 		{2A12D537-6979-48BE-9797-6AA95CDFFFC9}.Test|x86.Build.0 = Debug|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Debug|x64.Build.0 = Debug|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Debug|x86.Build.0 = Debug|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Release|x64.ActiveCfg = Release|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Release|x64.Build.0 = Release|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Release|x86.ActiveCfg = Release|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Release|x86.Build.0 = Release|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Test|x64.ActiveCfg = Debug|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Test|x64.Build.0 = Debug|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Test|x86.ActiveCfg = Debug|Any CPU
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A}.Test|x86.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{54748C34-2E75-44B4-96DB-300B3EBFE45A} = {09E95D32-C3D6-4CB2-B233-42F931747FF7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {19770C1F-F6D6-48F5-8F96-2956A480D8CF}

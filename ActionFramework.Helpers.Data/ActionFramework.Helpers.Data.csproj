@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Claes-Philip Staiger</Authors>
+    <Copyright>Claes Philip Staiger AB</Copyright>
+    <PackageLicenseUrl>https://github.com/cllp/actionframework/LICENSE</PackageLicenseUrl>
+    <Owners>Claes-Philip Staiger</Owners>
+    <PackageProjectUrl>https://github.com/cllp/actionframework/tree/master/ActionFramework.Helpers.Data</PackageProjectUrl>
+    <PackageTags>Data, SQL Server, Dynamic Dapper Extension</PackageTags>
+    <Title>ActionFramework.Helpers.Data</Title>
+    <PackageId>ActionFramework.Helpers.Data</PackageId>
+    <PackOnBuild>true</PackOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

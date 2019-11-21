@@ -3,16 +3,16 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>ActionFramework</PackageId>
-    <PackageVersion>1.0.0.*</PackageVersion>
+    <PackageVersion>1.0.0</PackageVersion>
     <Authors>Claes-Philip Staiger</Authors>
-    <Description>Action Framework</Description>
+    <Description>ActionFramework</Description>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Copyright>Claes Philip Staiger AB</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageLicenseUrl>actionframework.io/license.txt</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/cllp/actionframework/blob/master/LICENSE</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Owners>Claes-Philip Staiger</Owners>
-    <PackageProjectUrl>actionframework.io</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/cllp/actionframework</PackageProjectUrl>
     <PackageTags>API Management, Apps, Integration, Automation</PackageTags>
     <Title>ActionFramework</Title>
   </PropertyGroup>
