@@ -1,0 +1,30 @@
+using System;
+using Action = ActionFramework.Action;
+using ActionFramework.Helpers.Data.Interface;
+using ActionFramework.Helpers.Data;
+
+
+namespace MessageCount
+{
+    public class InsertMessageCount : Action
+    {
+        private IDataService _dataService;
+        public string SenseConnectionString { get; set; }
+        
+        public override object Run(dynamic obj)
+        {
+            try
+            {
+                _dataService = DataFactory.GetDataService(SenseConnectionString);
+                var result = _dataService.GetSingle<dynamic>("spInsertHourlyMessageCount", null);
+                return $"Ok {result}";
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, $"InsertMessageCount caused an exception");
+                throw ex;
+            }
+        }
+
+    }
+}

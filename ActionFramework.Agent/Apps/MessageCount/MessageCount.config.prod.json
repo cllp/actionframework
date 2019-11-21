@@ -1,0 +1,21 @@
+[
+  {
+    "ActionName": "InsertMessageCount",
+    "Active": true,
+    "CreatedDate": "2013-01-20T00:00:00Z",
+    "Cron": "*/60 * * * *",
+    "ApiSettings": {
+      "Active": true,
+      "Method": "get",
+      "Route": "api/messages/insertmessagecount",
+      "Authorize": false
+    },
+    "Properties": [
+      {
+        "Type": "string",
+        "Key": "SenseConnectionString",
+        "Value": "Server=tcp:lltsense.database.windows.net,1433;Initial Catalog=LLTSQL01;Persist Security Info=False;User ID=llt;Password=Visby1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+      }
+    ]
+  }
+]

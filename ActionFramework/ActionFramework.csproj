@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageId>ActionFramework</PackageId>
+    <PackageVersion>1.0.0.*</PackageVersion>
+    <Authors>Claes-Philip Staiger</Authors>
+    <Description>Action Framework</Description>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <Copyright>Claes Philip Staiger AB</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <PackageLicenseUrl>actionframework.io/license.txt</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Owners>Claes-Philip Staiger</Owners>
+    <PackageProjectUrl>actionframework.io</PackageProjectUrl>
+    <PackageTags>API Management, Apps, Integration, Automation</PackageTags>
+    <Title>ActionFramework</Title>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Logger\AppLog.cs" />
+    <Compile Remove="Logger\FileLog.cs" />
+    <Compile Remove="Logger\IActionLogger.cs" />
+    <Compile Remove="Logger\LogFactory.cs" />
+    <Compile Remove="Logger\LogModel.cs" />
+    <Compile Remove="Logger\LogService__.cs" />
+    <Compile Remove="Logger\StartUpLogger.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.6.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="3.0.1" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
+    <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Api\" />
+  </ItemGroup>
+</Project>

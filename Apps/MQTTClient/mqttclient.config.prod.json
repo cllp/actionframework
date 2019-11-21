@@ -1,0 +1,26 @@
+﻿[
+  {
+    "ActionName": "BlinkMqttSubscriber",
+    "Active": true,
+    "CreatedDate": "2013-01-20T00:00:00Z",
+    "Cron": "5 * * * *", //every minute
+    "ApiSettings": {
+      "Active": true,
+      "Method": "Post",
+      "Route": "",
+      "Authorize": false
+    },
+    "Properties": [
+      {
+        "Type": "string",
+        "Key": "Prop1",
+        "Value": "John Doe"
+      },
+      {
+        "Type": "string",
+        "Key": "Prop2",
+        "Value": "John@Doe.se"
+      }
+    ]
+  }
+]

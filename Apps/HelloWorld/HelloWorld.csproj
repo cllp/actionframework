@@ -1,11 +1,50 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
+<PropertyGroup>
+   <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+</PropertyGroup> 
 
-    <ItemGroup>
-    <ProjectReference Include="..\..\ActionFramework.Core\ActionFramework.Core.csproj" />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\netstandard2.0</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\netstandard2.0</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Icon&#xD;" />
+    <None Remove="HelloApi\bin\Debug\netstandard2.0\actionframework.core.dll" />
+    <None Remove="HelloApi\obj\HelloApi.csproj.nuget.g.props" />
+    <None Remove="HelloApi\obj\HelloApi.csproj.nuget.g.targets" />
+    <None Remove="HelloApi\obj\project.assets.json" />
+    <None Remove="HelloApi\obj\HelloApi.csproj.nuget.cache" />
+    <None Remove="HelloApi\obj\Debug\netstandard2.0\HelloApi.assets.cache" />
+    <None Remove="HelloApi\obj\Debug\netstandard2.0\HelloApi.csprojAssemblyReference.cache" />
+    <None Remove="HelloApi\obj\Debug\netstandard2.0\HelloApi.csproj.CoreCompileInputs.cache" />
+    <None Remove="HelloApi\obj\Debug\netstandard2.0\HelloApi.AssemblyInfoInputs.cache" />
+    <None Remove="HelloApi\obj\Debug\netstandard2.0\HelloApi.dll" />
+    <None Remove="HelloApi\obj\Debug\netstandard2.0\HelloApi.pdb" />
+    <None Remove="HelloApi\obj\Debug\netstandard2.0\HelloApi.csproj.CopyComplete" />
+    <None Remove="HelloApi\obj\Debug\netstandard2.0\HelloApi.csproj.FileListAbsolute.txt" />
   </ItemGroup>
-
+  <ItemGroup>
+    <Compile Remove="HelloApi\Class1.cs" />
+    <Compile Remove="HelloApi\obj\Debug\netstandard2.0\HelloApi.AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="helloworld.config.prod.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="helloworld.config.dev.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="helloworld.config.test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ActionFramework\ActionFramework.csproj" />
+  </ItemGroup>
 </Project>

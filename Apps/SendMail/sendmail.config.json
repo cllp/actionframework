@@ -1,0 +1,65 @@
+﻿[
+    {
+        "ActionName": "SendMessage",
+        "Active": true,
+        "CreatedDate": "2013-01-20T00:00:00Z",
+        "Cron": "5 * * * *", //every minute
+        "ApiSettings": {
+            "Active": true,
+            "Method": "Post",
+            "Route": "",
+            "Authorize": false
+        },
+      "Properties": [
+        /*
+        Gmail
+        <add key="Host" value="smtp.gmail.com"/>
+        <add key="Port" value="587"/>
+        <add key="SSL" value="true"/>
+        <add key="FromEmail" value="sender@gmail.com"/>
+        <add key="Username" value="sender@gmail.com"/>
+        <add key="Password" value="password"/>
+        */
+        {
+          "Type": "string",
+          "Key": "ApiKey",
+          "Value": "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"
+        },
+        {
+          "Type": "string",
+          "Key": "Domain",
+          "Value": "staiger.se"
+        },
+        {
+          "Type": "string",
+          "Key": "FromName",
+          "Value": "Claes-Philip Staiger"
+        },
+        {
+          "Type": "string",
+          "Key": "FromEmail",
+          "Value": "claes-philip@staiger.se"
+        },
+        {
+          "Type": "int",
+          "Key": "Port",
+          "Value": 25
+        },
+        {
+          "Type": "string",
+          "Key": "Host",
+          "Value": ""
+        },
+        {
+          "Type": "string",
+          "Key": "Username",
+          "Value": "claes-philip@staiger.se"
+        },
+        {
+          "Type": "string",
+          "Key": "Password",
+          "Value": "claes-philip@staiger.se"
+        }
+      ]
+    }
+]

@@ -1,0 +1,17 @@
+﻿[
+  {
+    "ActionName": "Authenticate",
+    "Active": true,
+    "CreatedDate": "2013-01-20T00:00:00Z",
+    "Cron": "5 * * * *", //every minute
+    "ApiSettings": {
+      "Active": true,
+      "Method": "Post",
+      "Route": "users/authenticate",
+      "Authorize": false
+    },
+    "Properties": [
+      
+    ]
+  }
+]
