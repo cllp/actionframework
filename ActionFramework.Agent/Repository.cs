@@ -5,9 +5,6 @@ using Action = ActionFramework.Action;
 using App = ActionFramework.App;
 using Hangfire;
 using Agent.Configuration;
-using ActionFramework.Helpers.Data.Interface;
-using ActionFramework.Helpers.Data;
-using ActionFramework.Configuration;
 using System.Text.Json;
 using Serilog;
 using ActionFramework.Logger;
@@ -24,14 +21,14 @@ namespace Agent
         private static Lazy<Repository> repository = new Lazy<Repository>(() => new Repository());
         public static Repository Current => repository.Value;
         private AgentSettings agentSettings = Startup.AgentSettings;
-        private ITableService _tableService;
-        private IDataService _dataService;
+        //private ITableService _tableService;
+        //private IDataService _dataService;
         private readonly ILogger logger = LogService.Logger;
 
         public Repository()
         {
-            _tableService = DataFactory.GetTableService(agentSettings.TableStorageConnectionstring);
-            _dataService = DataFactory.GetDataService(agentSettings.AgentConnectionString);
+           // _tableService = DataFactory.GetTableService(agentSettings.TableStorageConnectionstring);
+           // _dataService = DataFactory.GetDataService(agentSettings.AgentConnectionString);
         }
 
         public bool ScheduleAction(Action action, string schedule)
@@ -107,30 +104,6 @@ namespace Agent
             catch (Exception ex)
             {
                 logger.Error(ex, $"RunAction {action.ActionName} caused an exception. Input {System.Text.Json.JsonSerializer.Serialize(data)}");
-                throw ex;
-            }
-        }
-
-        public async Task<SendGrid.Response> SendMail(string actionname, object inputdata, Exception exception)
-        {
-            try
-            {
-                var apiKey = ConfigurationManager.Settings["AgentSettings:SendGridAPiKey"];
-                var sendMailFrom = ConfigurationManager.Settings["AgentSettings:SendMailFrom"];
-                var sendMailTo = ConfigurationManager.Settings["AgentSettings:SendMailTo"];
-
-                var subject = $"ActionFramework Error for Action: {actionname}";
-                var emailBody = $"Input object: {JsonSerializer.Serialize(inputdata)}. Message: {exception.Message}. StackTrace: {exception.StackTrace}";
-
-                //TODO configure the email alert
-                var sendMail = new ActionFramework.Helpers.Messaging.SendMail(apiKey, sendMailFrom); //noreply@actionframework.io
-                var results = await sendMail.Send(
-                    sendMailTo, subject, emailBody, "");
-                return results;
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex, "SendMail caused an error");
                 throw ex;
             }
         }

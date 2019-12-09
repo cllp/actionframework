@@ -18,45 +18,30 @@
 
   <ItemGroup>
     <None Remove="Apps\DynamicRuntimeAction.action" />
+    <None Remove="Apps\readme.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.11.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
-    <PackageReference Include="Hangfire" Version="1.7.7" />
-    <PackageReference Include="Microsoft.CodeAnalysis" Version="3.3.1" />
+    <PackageReference Include="Hangfire" Version="1.7.8" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="3.4.0" />
     <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="5.2.4" />
-    <PackageReference Include="RestSharp" Version="106.6.10" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
-    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     <PackageReference Include="Serilog.Sinks.Graylog" Version="2.1.1" />
-    <PackageReference Include="ActionFramework" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Apps\Assets\references.json">
+    <Content Include="Apps\readme.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Apps\DynamicDeviceInfo\dynamicdeviceinfo.config.prod.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Apps\DynamicDeviceInfo\dynamicdeviceinfo.config.dev.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Apps\DynamicDeviceInfo\references.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Apps\MessageCount\MessageCount.config.dev.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Apps\MessageCount\MessageCount.config.prod.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Content Update="DefaultAppReferences.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="LogSettings.json">
+    <Content Update="ActionFramework.Agent.config.dev.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -65,73 +50,22 @@
     <None Update="environment.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Apps\Assets\Assets.config.dev.json">
+    <None Update="Apps\readme.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInPackage>true</IncludeInPackage>
-    </None>
-    <None Include="Apps\Assets\Assets.config.prod.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInPackage>true</IncludeInPackage>
     </None>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ActionFramework.Helpers.Data\ActionFramework.Helpers.Data.csproj" />
-    <ProjectReference Include="..\ActionFramework.Helpers.Messaging\ActionFramework.Helpers.Messaging.csproj" />
+    <Folder Include="Apps\" />
+    <Folder Include="Apps\" />
+    <Folder Include="Apps\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ActionFramework\ActionFramework.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
-    <ProjectReference Include="..\..\llt.sense\LLT.Sense.Apps\IPOnly\IPOnly.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\..\llt.sense\LLT.Sense.Apps\Netmore\Netmore.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\..\llt.sense\LLT.Sense.Apps\Search\Search.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\..\llt.sense\LLT.Sense.Apps\Talkpool\Talkpool.csproj">
+    <ProjectReference Include="..\..\llt.sense\LLT.Sense.Apps\Ingest\Ingest.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Apps\Assets\GetDailyReport.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Update="Apps\Assets\GetDeviceFrequencyStatus.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Update="Apps\Assets\GetDeviceInfo.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Update="Apps\Assets\GetDeviceLogs.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Update="Apps\Assets\GetDevices.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Update="Apps\Assets\GetTodayMessageCountByRealEstate.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Update="Apps\Assets\SyncDevices.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Update="Apps\Assets\UpdateDevices.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Update="Apps\AppInfo\AppsList.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Update="Apps\DynamicDeviceInfo\DynamicDeviceInfo.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Update="Apps\MessageCount\InsertMessageCount.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-  </ItemGroup>
-
 </Project>

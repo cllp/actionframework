@@ -12,6 +12,14 @@ namespace LLT.API.Device
             try
             {
 
+
+                string base64Decoded = "W3siVGVzdDEiOiIxMjMiLCJUZXN0MiI6IjQ1NiJ9XQ==";//obj.ToString();
+                string base64Encoded;
+                byte[] data = System.Text.Encoding.ASCII.GetBytes(base64Decoded);
+                base64Encoded = System.Convert.ToBase64String(data);
+
+
+
                 if (Log == null)
                 {
                     //Console.WriteLine("Action Logger is null (Console)");

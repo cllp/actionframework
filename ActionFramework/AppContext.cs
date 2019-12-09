@@ -39,8 +39,8 @@ namespace ActionFramework
                     if (!Directory.Exists(dir))
                         throw new Exception(string.Format("Apps directory does not exists '{0}' ", dir));
 
-                    //this is the list of files/dlls where we search for actions
-                    var files = Directory.GetFiles(dir, "*.dll", SearchOption.AllDirectories);
+                    var files = Array.FindAll(
+                        System.IO.Directory.GetFiles(dir, "*.dll", System.IO.SearchOption.AllDirectories), IncludeDll);
 
                     //loop through each dll 
                     foreach (var dll in files)
@@ -53,7 +53,7 @@ namespace ActionFramework
                         try
                         {
                             //TODO: check why SNI not working
-                            if(!dll.EndsWith("sni.dll", StringComparison.CurrentCultureIgnoreCase))
+                            if (!dll.EndsWith("sni.dll", StringComparison.CurrentCultureIgnoreCase))
                                 assembly = assemblyContext.LoadFromAssemblyPath(dll);
                         }
                         catch (Exception ex)
@@ -93,7 +93,32 @@ namespace ActionFramework
             }
         }
 
-        private static Assembly CustomResolving(AssemblyLoadContext arg1, AssemblyName arg2)
+        private static bool IncludeDll(string s)
+        {
+            var filename = Path.GetFileName(s);
+
+            var excludeDll = new[] {
+                        "sni.dll",
+                        "ActionFramework.Agent.dll",
+                        "Microsoft",
+                        "Serilog",
+                        "System.",
+                        "Dapper",
+                        "Hangfire",
+                        "Newtonsoft",
+                        "RestSharp",
+                        "SendGrid",
+                        "Elastic"
+                    };
+
+            //filename.StartsWith();
+            if (excludeDll.Any(filename.Contains))
+                return false;
+            else
+                return true;
+        }
+
+private static Assembly CustomResolving(AssemblyLoadContext arg1, AssemblyName arg2)
         {
             return arg1.LoadFromAssemblyPath(@"C:\Addons\" + arg2.Name + ".dll");
         }

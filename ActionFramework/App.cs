@@ -125,9 +125,9 @@ namespace ActionFramework
             }
             catch (Exception ex)
             {
-                Log.Error(ex, $"GetConfiguration caused an exception");
+                Log.Error(ex, $"GetConfiguration for app {AppName.ToLower()} in environment {ConfigurationManager.Environment.ToLower()} caused an exception");
                 throw ex;
-            }
+            }   
         }
     }
 }

@@ -1,11 +1,11 @@
 using System;
 using Action = ActionFramework.Action;
-using ActionFramework.Logger;
 using System.Collections.Generic;
 using System.Linq;
 using ActionFramework.Helpers.Data.Interface;
 using ActionFramework.Helpers.Data;
 using ActionFramework.Configuration;
+using ActionFramework.Logger;
 using Newtonsoft.Json.Linq;
 
 
@@ -13,14 +13,13 @@ namespace Assets
 {
     public class GetDeviceLogs : Action
     {
-        public string SenseConnectionString { get; set; }
+        ////public string SenseConnectionString { get; set; }
         private IDataService _dataService;
 
 
         public override object Run(dynamic obj)
         {
-            _dataService = DataFactory.GetDataService(SenseConnectionString);
-
+            _dataService = DataFactory.GetDataService(ConfigurationManager.Settings["AgentSettings:SenseConnectionString"]);
             try
             {
                 var parameters = new Dictionary<string, string>();
@@ -54,7 +53,7 @@ namespace Assets
 {
     public class GetDailyReport : Action
     {
-        public string SenseConnectionString { get; set; }
+        ////public string SenseConnectionString { get; set; }
         private IDataService _dataService;
 
         public override object Run(dynamic obj)
@@ -67,7 +66,7 @@ namespace Assets
                 var results = sendMail.Send(
                     "claes-philip@staiger.se", "Test Subject", "TEst COntent", "<b>Test content</b>");
 
-                _dataService = DataFactory.GetDataService(SenseConnectionString);
+                _dataService = DataFactory.GetDataService(ConfigurationManager.Settings["AgentSettings:SenseConnectionString"]);
 
                 //get realestates
                 var realestates = _dataService.GetMany<dynamic>("SELECT * FROM RealEstate");
@@ -105,12 +104,13 @@ namespace Assets
 {
     public class GetDevices : Action
     {
-        public string SenseConnectionString { get; set; }
+        ////public string SenseConnectionString { get; set; }
         private IDataService _dataService;
 
         public override object Run(dynamic obj)
         {
-            _dataService = DataFactory.GetDataService(SenseConnectionString);
+            _dataService = DataFactory.GetDataService(ConfigurationManager.Settings["AgentSettings:SenseConnectionString"]);
+
             var result = _dataService.GetSingle<dynamic>("spGetDevices", null);
 
             try
@@ -131,13 +131,13 @@ namespace Assets
 {
     public class SyncDevices : Action
     {
-        public string SenseConnectionString { get; set; }
+        ////public string SenseConnectionString { get; set; }
         private IDataService _dataService;
 
         public override object Run(dynamic jsonData)
         {
 
-            _dataService = DataFactory.GetDataService(SenseConnectionString);
+            _dataService = DataFactory.GetDataService(ConfigurationManager.Settings["AgentSettings:SenseConnectionString"]);
 
             try
             {
@@ -159,8 +159,8 @@ namespace Assets
             catch (Exception ex)
             {
                 var errormsg = $"Action SyncDevices caused an exception. Input: {jsonData.ToString()}";
-                //LogFactory.File.Error(ex, errormsg); 
-                throw new Exception(errormsg, ex);
+                Log.Error(ex, errormsg);
+                throw ex;
             }
         }
 
@@ -171,12 +171,12 @@ namespace Assets
 {
     public class GetDeviceInfo : Action
     {
-        public string SenseConnectionString { get; set; }
+        ////public string SenseConnectionString { get; set; }
         private IDataService _dataService;
 
         public override object Run(dynamic obj)
         {
-            _dataService = DataFactory.GetDataService(SenseConnectionString);
+            _dataService = DataFactory.GetDataService(ConfigurationManager.Settings["AgentSettings:SenseConnectionString"]);
 
             try
             {
@@ -202,13 +202,12 @@ namespace Assets
 {
     public class GetDeviceFrequencyStatus : Action
     {
-        public string SenseConnectionString { get; set; }
+        ////public string SenseConnectionString { get; set; }
         private IDataService _dataService;
 
         public override object Run(dynamic obj)
         {
-            _dataService = DataFactory.GetDataService(SenseConnectionString);
-
+            _dataService = DataFactory.GetDataService(ConfigurationManager.Settings["AgentSettings:SenseConnectionString"]);
             try
             {
                 var parameters = new Dictionary<string, string>();
@@ -322,13 +321,13 @@ namespace Assets
 {
     public class UpdateDevices : Action
     {
-        public string SenseConnectionString { get; set; }
+        ////public string SenseConnectionString { get; set; }
         private IDataService _dataService;
 
         public override object Run(dynamic jsonData)
         {
 
-            _dataService = DataFactory.GetDataService(SenseConnectionString);
+            _dataService = DataFactory.GetDataService(ConfigurationManager.Settings["AgentSettings:SenseConnectionString"]);
 
             try
             {
@@ -354,8 +353,8 @@ namespace Assets
             catch (Exception ex)
             {
                 var errormsg = $"Action UpdateDevices caused an exception. Input: {jsonData.ToString()}";
-                //LogFactory.File.Error(ex, errormsg); 
-                throw new Exception(errormsg, ex);
+                Log.Error(ex, errormsg);
+                throw ex;
             }
         }
 
@@ -366,14 +365,14 @@ namespace Assets
 {
     public class GetTodayMessageCountByRealEstate : Action
     {
-        public string SenseConnectionString { get; set; }
+        ////public string SenseConnectionString { get; set; }
         private IDataService _dataService;
 
         public override object Run(dynamic obj)
         {
             try
             {
-                _dataService = DataFactory.GetDataService(SenseConnectionString);
+                _dataService = DataFactory.GetDataService(ConfigurationManager.Settings["AgentSettings:SenseConnectionString"]);
 
                 var parameters = new Dictionary<string, string>();
                 parameters.Add("RealEstateId", obj);
@@ -389,7 +388,7 @@ namespace Assets
             }
             catch (Exception ex)
             {
-                //LogFactory.File.Error(ex, $"GetTodayMessageCountByRealEstate caused an exception");
+                Log.Error(ex, $"GetTodayMessageCountByRealEstate caused an exception");
                 throw ex;
             }
         }

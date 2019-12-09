@@ -59,6 +59,7 @@ namespace Agent.Controllers.Generic
         [HttpPost]
         //[ActionLogFilter]
         public async Task<IActionResult> Post([FromBody]dynamic data)
+        //public async Task<IActionResult> Post([FromBody]System.Text.Json.JsonElement data)
         {
 
             var action = ActionFramework.AppContext.Action<T>();
@@ -68,7 +69,7 @@ namespace Agent.Controllers.Generic
                 var route = Request.Path.Value;
                 var username = Request.HttpContext.User.Identity.Name;
 
-                logger.Debug($"BaseController Post {route}. Username {username}. Data {System.Text.Json.JsonSerializer.Serialize(data)}");
+                //logger.Debug($"BaseController Post {route}. Username {username}. Data {System.Text.Json.JsonSerializer.Serialize(data)}");
 
                 var result = await repository.RunAction(action, data);
 
@@ -78,7 +79,6 @@ namespace Agent.Controllers.Generic
             {
                 logger.Error(ex, $" An exception occured Data: '{System.Text.Json.JsonSerializer.Serialize(data)}'");
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-
             }
         }
 

@@ -139,10 +139,10 @@ namespace Agent.Controllers.Generic
                     references.Add(MetadataReference.CreateFromFile(typeof(object).Assembly.Location));
                     references.Add(MetadataReference.CreateFromFile(typeof(ExpandoObject).Assembly.Location));
                     references.Add(MetadataReference.CreateFromFile(typeof(Newtonsoft.Json.JsonConvert).Assembly.Location));
-                    references.Add(MetadataReference.CreateFromFile(typeof(RestSharp.Http).Assembly.Location));
+                    //references.Add(MetadataReference.CreateFromFile(typeof(RestSharp.Http).Assembly.Location));
                     references.Add(MetadataReference.CreateFromFile(typeof(System.Data.SqlClient.SqlConnection).Assembly.Location));
 
-                    references.Add(MetadataReference.CreateFromFile(typeof(Microsoft.WindowsAzure.Storage.Table.TableEntity).Assembly.Location));
+                    //references.Add(MetadataReference.CreateFromFile(typeof(Microsoft.WindowsAzure.Storage.Table.TableEntity).Assembly.Location));
                     
                     references.Add(MetadataReference.CreateFromFile(typeof(System.Diagnostics.Trace).Assembly.Location));
 
