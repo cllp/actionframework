@@ -1,0 +1,28 @@
+2022-02-02 16:10:58.813 +01:00 [DBG] Loading assembly app HelloWorld
+2022-02-02 16:10:58.840 +01:00 [DBG] App loading configuration '/Users/claes-philipstaiger/development/actionframework/actionframework.agent/bin/Debug/netcoreapp3.1/helloworld.config.dev.json'
+2022-02-02 16:10:58.927 +01:00 [DBG] Successfully configured action InAndOut
+2022-02-02 16:10:58.927 +01:00 [DBG] Successfully configured action SayHello
+2022-02-02 16:10:58.928 +01:00 [DBG] Created generic controller helloworld.InAndOut
+2022-02-02 16:10:58.928 +01:00 [DBG] Created generic controller helloworld.SayHello
+2022-02-02 16:10:59.125 +01:00 [DBG] Successfully configured action InAndOut
+2022-02-02 16:10:59.125 +01:00 [DBG] Successfully configured action SayHello
+2022-02-02 16:10:59.126 +01:00 [DBG] Successfully configured action InAndOut
+2022-02-02 16:10:59.126 +01:00 [DBG] Successfully configured action SayHello
+2022-02-02 16:11:07.706 +01:00 [INF] user 'test' executed controller Agent.Controllers.Generic.BaseController`1[[helloworld.SayHello, HelloWorld, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], with protocol HTTP/1.1 [GET] on route localhost:11459/api/hello (ssl: True)
+2022-02-02 16:11:07.718 +01:00 [DBG] BaseController Get /api/hello. Username test. QueryStrings {}
+2022-02-02 16:11:07.718 +01:00 [DBG] Successfully configured action InAndOut
+2022-02-02 16:11:07.719 +01:00 [DBG] Successfully configured action SayHello
+2022-02-02 16:11:07.720 +01:00 [DBG] Executing action in sync with data SayHello
+2022-02-02 16:11:07.721 +01:00 [DBG] Successfully configured action InAndOut
+2022-02-02 16:11:07.721 +01:00 [DBG] Successfully configured action SayHello
+2022-02-02 16:11:07.786 +01:00 [INF] Prop1John Doe
+2022-02-02 16:11:07.786 +01:00 [INF] This is a test log
+2022-02-02 16:11:10.468 +01:00 [INF] user 'test' executed controller Agent.Controllers.Generic.BaseController`1[[helloworld.SayHello, HelloWorld, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], with protocol HTTP/1.1 [GET] on route localhost:11459/api/hello (ssl: True)
+2022-02-02 16:11:10.469 +01:00 [DBG] BaseController Get /api/hello. Username test. QueryStrings {}
+2022-02-02 16:11:10.469 +01:00 [DBG] Successfully configured action InAndOut
+2022-02-02 16:11:10.469 +01:00 [DBG] Successfully configured action SayHello
+2022-02-02 16:11:10.469 +01:00 [DBG] Executing action in sync with data SayHello
+2022-02-02 16:11:10.469 +01:00 [DBG] Successfully configured action InAndOut
+2022-02-02 16:11:10.469 +01:00 [DBG] Successfully configured action SayHello
+2022-02-02 16:11:10.469 +01:00 [INF] Prop1John Doe
+2022-02-02 16:11:10.469 +01:00 [INF] This is a test log
