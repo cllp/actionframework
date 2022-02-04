@@ -7,6 +7,7 @@ using Agent.Auth;
 using ActionFramework.Logger;
 using Serilog;
 using Microsoft.AspNetCore.Http;
+using Agent.GenericControllerProvider.Filters;
 
 namespace Agent.Controllers
 {
@@ -27,6 +28,7 @@ namespace Agent.Controllers
 
         [HttpGet]
         [Authorize]
+
         public IActionResult Schedule(string actionname, string cron)
         {
             string schedule = string.Empty;
@@ -48,7 +50,7 @@ namespace Agent.Controllers
 
         [HttpGet]
         [Authorize]
-        //[AllowAnonymous]
+        [ActionLogFilter]
         public IActionResult Apps()
         {
             try

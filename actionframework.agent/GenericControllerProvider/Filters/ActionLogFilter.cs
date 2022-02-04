@@ -32,7 +32,7 @@ namespace Agent.GenericControllerProvider.Filters
             var method = context.HttpContext.Request.Method;
             var protocol = context.HttpContext.Request.Protocol;
 
-            logger.Information(string.Format("user '{0}' executed controller {1}, with protocol {2} [{3}] on route {4} (ssl: {5})",
+            logger.Debug(string.Format("user '{0}' executed controller {1}, with protocol {2} [{3}] on route {4} (ssl: {5})",
                 username,
                 context.Controller.GetType().FullName,
                 protocol, //protocol

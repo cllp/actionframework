@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 
@@ -7,63 +8,34 @@ namespace ActionFramework.Logger
     public class LogService
     {
         private static ILogger logger = null;
+        private readonly IConfiguration _configuration;
 
-        public LogService()
+        public LogService(IConfiguration configuration)
         {
-            EnsureInitialized();
+            _configuration = configuration;
+            //EnsureInitialized();
         }
 
         private static void Configure()
         {
-            /*
-            logger = new LoggerConfiguration()
-            .Enrich.FromLogContext()
-            .WriteTo.Console()
-            .CreateLogger();
-            */
-            
-
-            //var configuration = ConfigurationManager.Settings.GetSection("Serilog");
-
             var configuration = new ConfigurationBuilder()
-              .AddJsonFile("LogSettings.json")
-              .Build();
-            //Log.Logger = new LoggerConfiguration()
+
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json")
+            .AddJsonFile(string.Format("appsettings.{0}.json", ActionFramework.Configuration.ConfigurationManager.Environment), true)
+            .Build();
+
             logger = new LoggerConfiguration()
-           //.Enrich.FromLogContext()
-           //.WriteTo.Console()
-
-
-           .ReadFrom.Configuration(configuration)
-
-
-
-           //.ReadFrom.Settings(configuration)
-
-           //.WriteTo.Console(new RenderedCompactJsonFormatter())
-           //.WriteTo.File(new RenderedCompactJsonFormatter(), @"c:\temp\log.json")
-           //.WriteTo.File(@"c:\temp\log.json")
-
-           /*
-           .WriteTo.Graylog(new GraylogSinkOptions()
-           {
-               HostnameOrAddress = ConfigurationManager.Settings["AgentSettings:GraylogUrl"], //"3lkjk6.stackhero-network.com", //3lkjk6.stackhero-network.com
-               Port = 12201,
-               MinimumLogEventLevel = Serilog.Events.LogEventLevel.Verbose,
-               Facility = ConfigurationManager.Settings["AgentSettings:GraylogFacility"]//"Development"
-           })
-           */
-          
-
-           //.WriteTo.File(new RenderedCompactJsonFormatter(), "/Logs/log.ndjson")
-           //.WriteTo.Console(new RenderedCompactJsonFormatter())
-           .CreateLogger();
-
-             
-
+            .ReadFrom.Configuration(configuration)
+            .Enrich.FromLogContext()
+            .Enrich.WithEnvironmentUserName()
+            //.Enrich.WithMachineName()
+            .Enrich.WithEnvironmentName()
+            //.Serilog.Enrichers.AspnetcoreHttpcontext()
+            //.Enrich.WithCorrelationId()
+            .CreateLogger();
+            
             Serilog.Debugging.SelfLog.Enable(Console.Error);
-
-            //return Log.Logger;
         }
 
         private static void EnsureInitialized()

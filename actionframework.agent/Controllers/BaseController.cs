@@ -8,19 +8,18 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ActionFramework.Logger;
 using Serilog;
+using Agent.GenericControllerProvider.Filters;
 
 namespace Agent.Controllers.Generic
 {
     [Route("api/[controller]")]
     public class BaseController<T> : Controller where T : class
     {
-        //private Storage<T> _storage;
         private readonly AgentSettings _agentSettings;
         private readonly IConfiguration _configuration;
         private Repository repository = Repository.Current;
         private ILogger logger = LogService.Logger;
 
-        //public BaseController(Storage<T> storage, AgentSettings agentSettings, IConfiguration configuration)
         public BaseController(AgentSettings agentSettings, IConfiguration configuration)
         {
             _agentSettings = agentSettings;
@@ -31,6 +30,7 @@ namespace Agent.Controllers.Generic
         /// Dynamic Get, single data string for input to an action
         /// </summary>
         [HttpGet("{data}")]
+        [ActionLogFilter]
         public async Task<IActionResult> Get(string data)
         {
             try
@@ -57,7 +57,7 @@ namespace Agent.Controllers.Generic
         /// Dynamic Post. Post the body for input to an action
         /// </summary>
         [HttpPost]
-        //[ActionLogFilter]
+        [ActionLogFilter]
         public async Task<IActionResult> Post([FromBody]dynamic data)
         //public async Task<IActionResult> Post([FromBody]System.Text.Json.JsonElement data)
         {
@@ -68,8 +68,7 @@ namespace Agent.Controllers.Generic
             {
                 var route = Request.Path.Value;
                 var username = Request.HttpContext.User.Identity.Name;
-
-                //logger.Debug($"BaseController Post {route}. Username {username}. Data {System.Text.Json.JsonSerializer.Serialize(data)}");
+                logger.Debug($"BaseController Post {route}. Username {username}. Data {System.Text.Json.JsonSerializer.Serialize(data)}");
 
                 var result = await repository.RunAction(action, data);
 
@@ -87,7 +86,7 @@ namespace Agent.Controllers.Generic
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        //[ActionLogFilter]
+        [ActionLogFilter]
         public async Task<IActionResult> Get()
         {
             try
@@ -123,13 +122,5 @@ namespace Agent.Controllers.Generic
         {
             return Path.GetFileName(requestPath);
         }
-
-        /*
-        [HttpPost("{id}")]
-        public void Post(Guid id, [FromBody]T value)
-        {
-            _storage.Add(id, value);
-        }
-        */
     }
 }

@@ -27,6 +27,7 @@ namespace ActionFramework.Configuration
             Settings = new ConfigurationBuilder()
                     .SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile($"appsettings.{Environment}.json", false, true)
+                    //
                     //.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                     //.AddEnvironmentVariables()
                     .Build();
@@ -38,10 +39,14 @@ namespace ActionFramework.Configuration
             return section; //agentSettingsSection.Get<T>();
         }
 
+        
         public static string Environment
         {
             get
             {
+                //return $"appsettings.{System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Prod"}.json";
+                return System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production";
+                /*
                 var rootdir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
                 string filename = $"environment.txt";
                 var filepath = Path.Combine(rootdir, filename);
@@ -54,8 +59,10 @@ namespace ActionFramework.Configuration
                 {
                     throw new Exception($"Error loading required file environment.txt in root directory. Message: '{ex.Message}'");
                 }
+                */
             }
         }
+        
 
         public static string AppsDirectory
         {

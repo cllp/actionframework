@@ -31,6 +31,8 @@ namespace ActionFramework
         /// <param name="configuration"></param>
         internal void Configure(ActionConfig configuration)
         {
+            logger.Debug(string.Format("Configure Action ", this.ActionName));
+
             try
             {
                 foreach (var prop in GetType().GetProperties())

@@ -3,18 +3,18 @@
     "ActionName": "SayHello",
     "Active": true,
     "CreatedDate": "2013-01-20T00:00:00Z",
-    "Cron": "5 * * * *", //every minute
+    "Cron": "5 * * * *",
     "ApiSettings": {
       "Active": true,
-      "Method": "Post",
-      "Route": "",
-      "Authorize": false
+      "Method": "get",
+      "Route": "api/hello",
+      "Authorize": true
     },
     "Properties": [
       {
         "Type": "string",
         "Key": "Prop1",
-        "Value": "John Doe"
+        "Value": "John Doeddddd"
       },
       {
         "Type": "string",

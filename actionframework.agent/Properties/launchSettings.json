@@ -20,8 +20,8 @@
     "actionframework.agent": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
-      "applicationUrl": "https://localhost:11459;http://localhost:62225",
+      "launchUrl": "/",
+      "applicationUrl": "https://localhost:11234/;http://localhost:11235",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

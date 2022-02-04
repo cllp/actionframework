@@ -36,9 +36,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Update="environment.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Apps\info.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -53,17 +50,11 @@
   <ItemGroup>
     <Content Remove="LogSettings.json" />
     <Content Remove="LogSettings.json" />
+    <Content Remove="appsettings.Production.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="LogSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="LogSettings.json">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>

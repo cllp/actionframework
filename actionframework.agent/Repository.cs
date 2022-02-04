@@ -3,7 +3,6 @@ using Action = ActionFramework.Action;
 using App = ActionFramework.App;
 using Hangfire;
 using Agent.Configuration;
-using System.Text.Json;
 using Serilog;
 using ActionFramework.Logger;
 using System;
@@ -18,18 +17,13 @@ namespace Agent
     public class Repository
     {
         //Singleton
-        //private readonly ILogger<Repository> _logger;
         private static Lazy<Repository> repository = new Lazy<Repository>(() => new Repository());
         public static Repository Current => repository.Value;
         private AgentSettings agentSettings = Startup.AgentSettings;
-        //private ITableService _tableService;
-        //private IDataService _dataService;
         private readonly ILogger logger = LogService.Logger;
 
         public Repository()
         {
-           // _tableService = DataFactory.GetTableService(agentSettings.TableStorageConnectionstring);
-           // _dataService = DataFactory.GetDataService(agentSettings.AgentConnectionString);
         }
 
         public bool ScheduleAction(Action action, string schedule)
@@ -38,13 +32,12 @@ namespace Agent
 
             try
             {
-                //LogFactory.File.Information(msg);
                 RecurringJob.AddOrUpdate(string.Format("{0}", action.ToString().ToLower()), () => RunAction(action.ActionName.ToLower()), schedule);
                 return true;
             }
             catch (Exception ex)
             {
-                //LogFactory.File.Error(ex, "Error setting " + msg);
+                logger.Fatal(ex, ex.Message);
                 throw ex;
             }
         }
@@ -57,7 +50,7 @@ namespace Agent
         { 
             get
             {
-                return ActionFramework.AppContext.Current; //return apps; 
+                return ActionFramework.AppContext.Current;
             }
         }
 

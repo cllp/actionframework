@@ -14,7 +14,7 @@ namespace ActionFramework
     public static class AppContext
     {
         private static List<ActionFramework.App> apps;
-        public static ILogger Log => LogService.Logger;
+        public static ILogger logger => LogService.Logger;
 
         public static void AddApp(Assembly assembly)
         {
@@ -28,6 +28,7 @@ namespace ActionFramework
 
         public static void Initialize()
         {
+            logger.Debug("Initialize AppContext");
             try
             {
                 apps = new List<ActionFramework.App> ();
@@ -59,7 +60,7 @@ namespace ActionFramework
                         catch (Exception ex)
                         {
 
-                            Log.Error(ex, $"Could not load app assembly: '{dll}'. Message: '{ex.Message}'");
+                            logger.Error(ex, $"Could not load app assembly: '{dll}'. Message: '{ex.Message}'");
                             throw ex;
                         }
 
@@ -70,7 +71,7 @@ namespace ActionFramework
                                 //the the assembly (app) name
                                 string filename = Path.GetFileNameWithoutExtension(dll);
 
-                                Log.Debug($"Loading assembly app {filename}");
+                                logger.Debug($"Loading assembly app {filename}");
 
                                 //check if the apps already contains an app with the same name
                                 if (apps.Find(a => a.AppName.Equals(filename, StringComparison.InvariantCultureIgnoreCase)) == null)
@@ -79,7 +80,7 @@ namespace ActionFramework
                                 }
                                 else
                                 {
-                                    Log.Warning($"App '{filename}' is already loaded, skipping dublicate '{dll}'. Check directory '{dir}' recursively for dublicates");
+                                    logger.Warning($"App '{filename}' is already loaded, skipping dublicate '{dll}'. Check directory '{dir}' recursively for dublicates");
                                 }
                             }
                         }
@@ -88,7 +89,7 @@ namespace ActionFramework
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "An error occured when loading assemblies");
+                logger.Error(ex, "An error occured when loading assemblies");
                 throw ex;
             }
         }
@@ -118,7 +119,7 @@ namespace ActionFramework
                 return true;
         }
 
-private static Assembly CustomResolving(AssemblyLoadContext arg1, AssemblyName arg2)
+        private static Assembly CustomResolving(AssemblyLoadContext arg1, AssemblyName arg2)
         {
             return arg1.LoadFromAssemblyPath(@"C:\Addons\" + arg2.Name + ".dll");
         }
@@ -200,7 +201,7 @@ private static Assembly CustomResolving(AssemblyLoadContext arg1, AssemblyName a
             }
             catch (Exception ex)
             {
-                //StartUpLogger.FileLog.Error(ex.InnerException, $"Check if assembly '{assembly}' is an app caused an exception");
+                logger.Error(ex.InnerException, $"Check if assembly '{assembly}' is an app caused an exception");
                 throw ex;
             }
         }

@@ -15,7 +15,7 @@ namespace ActionFramework
         public string AppName => assembly.GetName().Name;
         public string AppVersion => this.GetType().GetTypeInfo().Assembly.GetName().Version.ToString();
         private Assembly assembly;
-        public ILogger Log => LogService.Logger;
+        public ILogger logger => LogService.Logger;
 
 
         private IList<ActionConfig> config;
@@ -66,7 +66,7 @@ namespace ActionFramework
                         }
                         catch (Exception ex)
                         {
-                            Log.Error(ex, $"Set action config caused an exception. ActionType '{type.Name}'");
+                            logger.Error(ex, $"Set action config caused an exception. ActionType '{type.Name}'");
                             throw ex;
                         }
                     }
@@ -75,7 +75,7 @@ namespace ActionFramework
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, $"Get Actions caused an exception");
+                    logger.Error(ex, $"Get Actions caused an exception");
                     throw ex;
                 }
             }
@@ -99,15 +99,14 @@ namespace ActionFramework
         {
             try
             {
-                var environment = ConfigurationManager.Environment; //ConfigurationManager.Settings["AgentSettings:Environment"];
+                var environment = ConfigurationManager.Environment;
+
                 if (string.IsNullOrEmpty(environment))
                     throw new Exception("Environment is not configured in the agent, verify environment.txt in root directory");
 
                 var rootdir = ConfigurationManager.AppRootDirectory; //TODO change to apps directory to load from the same place as dynamic apps
-                //var rootdir = ConfigurationManager.AppsDirectory;//System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
                 string filename = $"{AppName.ToLower()}.config.{environment.ToLower()}.json";
 
-                //var filepath = Path.Combine(rootdir, AppName, filename);
                 var filepath = Path.Combine(rootdir, filename); // in order to debug in root directory
 
                 //find file even if there are root directory
@@ -117,15 +116,14 @@ namespace ActionFramework
 
                 var json = File.ReadAllText(file);
 
-                Log.Debug($"App loading configuration '{file}'");
+                logger.Debug($"App loading configuration '{file}'");
 
-                //TODO: Confirm this works
                 var appconfig = JsonSerializer.Deserialize<List<ActionConfig>>(json);
                 return appconfig;
             }
             catch (Exception ex)
             {
-                Log.Error(ex, $"GetConfiguration for app {AppName.ToLower()} in environment {ConfigurationManager.Environment.ToLower()} caused an exception");
+                logger.Error(ex, $"GetConfiguration for app {AppName.ToLower()} in environment {ConfigurationManager.Environment.ToLower()} caused an exception");
                 throw ex;
             }   
         }
